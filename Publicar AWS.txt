@@ -1,0 +1,17 @@
+aws ecr get-login-password --region sa-east-1 | docker login --username AWS --password-stdin 986565844821.dkr.ecr.sa-east-1.amazonaws.com/arquitetos
+
+
+docker build -t anakinrox/arquitetos:P1.0.2 .
+docker tag anakinrox/arquitetos:P1.0.2 986565844821.dkr.ecr.sa-east-1.amazonaws.com/arquitetos:P1.0.2
+docker push 986565844821.dkr.ecr.sa-east-1.amazonaws.com/arquitetos:P1.0.2
+
+
+
+
+docker build -t anakinrox/arquitetos:P1.0.2 .
+docker tag anakinrox/arquitetos:P1.0.2 986565844821.dkr.ecr.sa-east-1.amazonaws.com/arquitetos:T1.0
+docker push 986565844821.dkr.ecr.sa-east-1.amazonaws.com/arquitetos:T1.0
+
+
+
+docker push anakinrox/node-app:P5.2.5
