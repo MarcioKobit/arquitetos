@@ -23,8 +23,10 @@ const NavBar = () => {
 	const location = useLocation();
 	const { pathname } = location;
 	// alert(pathname);
-	const isDark = pathname === "/prizes";
 	// const isDark = pathname === "/";
+	const isDark = true;
+
+	// alert(isDark)
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [open, setOpen] = useState(false);
