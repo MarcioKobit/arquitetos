@@ -19,7 +19,7 @@ const Login = () => {
 		try {
 			const login = await auth.authenticate(values.email, values.password);
 			if (login != null) {
-				console.log(login)
+				// console.log(login)
 				navigate("/");
 			} else {
 				console.log('Erro de Login')

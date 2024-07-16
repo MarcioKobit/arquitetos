@@ -18,9 +18,7 @@ export default function Home() {
                     <Link to="prizes">
                         <CardsHome icon={trophy} title={"Prêmios"} />
                     </Link>
-                    <Link to="stores">
-                        <CardsHome icon={stores} title={"Lojas"} />
-                    </Link>
+                    {/* <Link to="stores"> <CardsHome icon={stores} title={"Lojas"} /> </Link> */}
                     <Link to="extracts">
                         <CardsHome icon={extracts} title={"Extratos"} />
                     </Link>

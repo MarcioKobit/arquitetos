@@ -6,7 +6,7 @@ export const ProtectdLayout = ({ children }: { children: JSX.Element }) => {
 
 
 
-    console.log('Protected: ' + JSON.stringify(auth))
+    // console.log('Protected: ' + JSON.stringify(auth))
 
     if (!auth.id) {
 

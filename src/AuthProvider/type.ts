@@ -1,8 +1,10 @@
 export interface IUser {
     id?: number;
+    idpessoa?: number;
     nome?: string;
     token?: string;
     rota?: string;
+    cupom?: string;
 
 }
 

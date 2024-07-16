@@ -2,11 +2,11 @@ import api from "../services/api";
 import { IUser } from "./type";
 
 export function setUserLocalStorage(user: IUser | null) {
-    localStorage.setItem('p', JSON.stringify(user));
+    sessionStorage.setItem('p', JSON.stringify(user));
 }
 
 export function getUserLocalStorage() {
-    const json = localStorage.getItem('p');
+    const json = sessionStorage.getItem('p');
 
     if (!json) {
         return null;
@@ -17,11 +17,11 @@ export function getUserLocalStorage() {
 }
 
 export function setPontosLocalStorage(pontos: number,) {
-    localStorage.setItem('nlvpoints', pontos + "");
+    sessionStorage.setItem('nlvpoints', pontos + "");
 }
 
 export function getPontosLocalStorage() {
-    const pontos = localStorage.getItem('nlvpoints');
+    const pontos = sessionStorage.getItem('nlvpoints');
 
     if (!pontos) {
         return 0;
@@ -32,7 +32,7 @@ export function getPontosLocalStorage() {
 
 export async function LoginRequest(email: string, password: string) {
     try {
-        const wRetorno = await api.post('/login', { LOGIN: email, SENHA: password, AMBIENTE: 'DEV' });
+        const wRetorno = await api.post('/login', { LOGIN: email, SENHA: password,  AREA: "ARQUITETOS", AMBIENTE: 'DEV' });
         // console.log(wRetorno);
         return wRetorno.data;
         // return wRetorno;

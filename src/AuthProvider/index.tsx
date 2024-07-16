@@ -23,12 +23,11 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     async function authenticate(email: string, password: string) {
         try {
             const response = await LoginRequest(email, password);
-            // console.log(response);
             if (response.STATUS == true) {
-                const paylod = { id: response.DATA.ID, nome: response.DATA.NOME, token: response.DATA.TOKEN, rota: response.DATA.ROTA };
+                console.log(response.DATA)
+                const paylod = { id: response.DATA.ID, IDPESSOA: response.DATA.IDPESSOA, nome: response.DATA.NOME, token: response.DATA.TOKEN, rota: response.DATA.ROTA, cupom: response.DATA.CUPOM };
                 setUser(paylod);
                 setUserLocalStorage(paylod);
-
                 const pontos = await getPontos(paylod);
                 pontos.STATUS == true ? setPontosLocalStorage(pontos.DATA.pontos) : setPontosLocalStorage(0);
 
