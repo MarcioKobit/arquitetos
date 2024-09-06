@@ -34,11 +34,11 @@ const Collapse: React.FC<CollapseProps> = ({ title, subtitle, text }) => {
 						</button>
 						<h3 className="text-green-600 text-xl font-semibold mb-8">{subtitle}</h3>
 						<p className="text-zinc-500 text-sm">{text}</p>
-						<ul className="list-none text-zinc-500 text-sm mt-4">
+						{/* <ul className="list-none text-zinc-500 text-sm mt-4">
 							<li><div className="w-2 h-2 bg-green-500 rounded-full inline-block mr-2 mt-4"></div>Item 1</li>
 							<li><div className="w-2 h-2 bg-green-500 rounded-full inline-block mr-2 mt-4"></div>Item 2</li>
 							<li><div className="w-2 h-2 bg-green-500 rounded-full inline-block mr-2 mt-4"></div>Item 3</li>
-						</ul>
+						</ul> */}
 					</>
 				)}
 			</div>

@@ -1,15 +1,31 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Points from "../Points";
-import { UserContext } from "../../contexts/userContext";
-import { getPontosLocalStorage } from "../../AuthProvider/utils";
+import api from "../../services/api.ts";
+import { userAuth } from "../../AuthProvider/userAuth.tsx";
+import { setPontosLocalStorage } from "../../AuthProvider/utils.ts";
 
 const PointsHome = () => {
-    const { user } = useContext(UserContext);
+
     const [pontos, setPontos] = useState(0);
-    // setPontos(getPontosLocalStorage())
+    const auth = userAuth();
+
+
+    async function f_getPoints() {
+        try {
+            const objPontos = await api.get(auth.rota + '/pontos');
+            // console.log(objPontos.data);
+            if (objPontos.data.RECORDS >= 1) {
+                setPontos(objPontos.data.DATA.pontos);
+                setPontosLocalStorage(objPontos.data.DATA.pontos);
+
+            }
+
+        } catch (error) {
+        }
+    }
 
     useEffect(() => {
-        setPontos(getPontosLocalStorage())
+        f_getPoints();
     }, []);
 
 

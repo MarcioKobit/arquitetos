@@ -23,8 +23,8 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     async function authenticate(email: string, password: string) {
         try {
             const response = await LoginRequest(email, password);
+            // console.log(response)
             if (response.STATUS == true) {
-                console.log(response.DATA)
                 const paylod = { id: response.DATA.ID, IDPESSOA: response.DATA.IDPESSOA, nome: response.DATA.NOME, token: response.DATA.TOKEN, rota: response.DATA.ROTA, cupom: response.DATA.CUPOM };
                 setUser(paylod);
                 setUserLocalStorage(paylod);

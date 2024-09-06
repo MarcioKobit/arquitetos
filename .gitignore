@@ -24,3 +24,4 @@ dist-ssr
 *.sln
 *.sw?
 src/services/api.ts
+BACKUP.js

@@ -24,7 +24,6 @@ const Prizes = () => {
 		try {
 			const objPremios = await api.get(auth.rota + '/premios');
 			setPrizes2(objPremios.data.DATA);
-			// console.log(prize.)
 		} catch (error) {
 			console.log(error)
 		}
@@ -46,7 +45,7 @@ const Prizes = () => {
 					{prizes2.map((el) => {
 						return (
 							<Link to={`/prize/${el.id}`} key={el.id}>
-								<CardsPrize title={el.title} picture={el.picture} percentage={calculatePorcentage(el.points)} points={el.points} />
+								<CardsPrize title={el.title} picture={el.photo[0]} percentage={calculatePorcentage(el.points)} points={el.points} />
 							</Link>
 						);
 					})}

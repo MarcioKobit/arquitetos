@@ -1,6 +1,6 @@
 
 import trophy from "./../assets/trophy.png";
-import stores from "./../assets/stores.png";
+// import stores from "./../assets/stores.png";
 import extracts from "./../assets/extracts.png";
 // import financial_extracts from "./assets/financial-extracts.png";
 import faq from "./../assets/faq.png";

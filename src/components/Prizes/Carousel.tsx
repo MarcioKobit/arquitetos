@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-// import { PrizesContext } from '../../contexts/prizesContext.tsx';
 import CardsCarousel from './CardsCarousel';
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { Prize as premio } from "../../contexts/prizesContext.ts";
 import api from '../../services/api.ts';
 import { userAuth } from '../../AuthProvider/userAuth.tsx';
+import ImageSlider from '../images/ImageSlider.tsx';
 
 const Carousel = ({ current }: { current: number }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -28,19 +28,10 @@ const Carousel = ({ current }: { current: number }) => {
     setIsMobileView(window.innerWidth < 768); // Adjust the breakpoint as needed
   };
 
-  const getPrizes = async () => {
-    try {
-      const objPremios = await api.get(auth.rota + '/premios?idpremio=' + current + '&not=true');
-      setPrizes(objPremios.data.DATA);
-      // console.log(objPremios)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
 
   useEffect(() => {
-    getPrizes();
+    // getPrizes();
     handleResize(); // Initial check
     // window.addEventListener("resize", handleResize);
     // return () => {
@@ -54,10 +45,11 @@ const Carousel = ({ current }: { current: number }) => {
     <div className="relative">
       <div className="flex justify-center items-center gap-8">
         {isMobileView ? (
-          <CardsCarousel prizes={newPrizes} isNextTransition={isNextTransition} currentImageIndex={currentImageIndex} isFirst={true} />
+          // <CardsCarousel prizes={newPrizes} isNextTransition={isNextTransition} currentImageIndex={currentImageIndex} isFirst={true} />
+          ''
         ) : (
-          <>
-            <CardsCarousel prizes={newPrizes} isNextTransition={isNextTransition} currentImageIndex={currentImageIndex} isFirst={true} />
+            <>
+              <CardsCarousel prizes={[]} isNextTransition={isNextTransition} currentImageIndex={currentImageIndex} isFirst={true} />
             {/* <CardsCarousel prizes={newPrizes} isNextTransition={isNextTransition} currentImageIndex={currentImageIndex} isFirst={false} /> */}
           </>
         )}

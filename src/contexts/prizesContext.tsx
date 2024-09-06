@@ -10,7 +10,7 @@ export const PrizesProvider = ({ children }: IPrizeProvider) => {
 
     async function gravaPrizes(prize: string) {
 
-        console.log('gravaPrizes: ' + prize)
+        // console.log('gravaPrizes: ' + prize)
 
     }
 

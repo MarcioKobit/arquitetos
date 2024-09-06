@@ -13,12 +13,15 @@
     "@headlessui/react": "^1.7.14",
     "antd": "^5.19.0",
     "axios": "^1.7.2",
+    "mkcert": "^3.2.0",
+    "nss": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.11.1",
     "tailwind-scrollbar": "^3.0.4",
-    "typeface-inter": "^3.18.1"
+    "typeface-inter": "^3.18.1",
+    "vite-plugin-mkcert": "^1.17.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

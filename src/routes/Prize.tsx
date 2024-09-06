@@ -1,38 +1,42 @@
 import NavBar from "../components/NavBar";
-// import milao_big from "../assets/milao-big.png";
 import vector_big from "../assets/vector-big.png";
 import ProgressBar from "../components/ProgressBar";
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import Carousel from "../components/Prizes/Carousel";
+import Carousel from "../components/Prizes/Carousel";
 import api from "../services/api.ts";
 import { userAuth } from "../AuthProvider/userAuth.tsx";
 import { Prize as premio } from "../contexts/prizesContext.ts";
-import { getPontosLocalStorage } from "../AuthProvider/utils.ts";
+import ImageSlider from "../components/images/ImageSlider.tsx";
 
 const Prize = () => {
 
 	const auth = userAuth();
 	const { id } = useParams();
 	const [pontos, setPontos] = useState(0);
-	// setPontos(getPontosLocalStorage())
-
-
+	const [slides, setslides] = useState([]);
 	const [prize, setPrizes] = useState<premio | null>()
 
 	const getPrizes = async () => {
 		try {
 			const objPremios = await api.get(auth.rota + '/premios?idpremio=' + id);
 			setPrizes(objPremios.data.DATA[0]);
-			// console.log(prize)
+			setslides(objPremios.data.DATA[0].photo)
+
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-
-
+	const getPontos = async () => {
+		try {
+			const objPontos = await api.get(auth.rota + '/pontos');
+			setPontos(objPontos.data.DATA.pontos);
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	const calculatePorcentage = (points: number) => {
 		const porcentage = (pontos / points) * 100;
@@ -42,8 +46,10 @@ const Prize = () => {
 	useEffect(() => {
 		if (id != undefined) {
 			getPrizes();
+			getPontos();
+
 		}
-		setPontos(getPontosLocalStorage())
+
 	}, []);
 
 	return (
@@ -54,15 +60,10 @@ const Prize = () => {
 					<div className="md:mr-8 mx-4 :mx-0">
 						<div className="relative">
 							<img src={vector_big} className="absolute bottom-0 object-contain rounded-3xl md:w-full" alt="vector" />
-							<img src={prize.picture} className="rounded-3xl md:w-full" alt="nova_iorque" />
+							<ImageSlider slides={slides} />
+							{/* <img src={prize.photo[0].foto} className="rounded-3xl md:w-full" width={271} height={311} alt="" /> */}
 						</div>
-						<div className="relative bottom-12 w-full flex justify-center">
-							<div className="flex items-center">
-								<span className="h-2 w-2 bg-white rounded-full mx-2"></span>
-								<span className="h-2 w-2 bg-green-300 rounded-full mx-2"></span>
-								<span className="h-2 w-2 bg-green-300 rounded-full mx-2"></span>
-							</div>
-						</div>
+
 					</div>
 					<div className="px-4 md:px-16 py-8">
 						<h1 className="text-3xl md:text-3xl text-green-600 break-words font-bold mb-4 md:w-72">{prize.title}</h1>

@@ -5,6 +5,7 @@ export interface Prize {
   texto: string;
   points: number;
   picture: string;
+  photo: any;
 
 }
 

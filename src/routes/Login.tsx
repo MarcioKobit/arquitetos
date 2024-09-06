@@ -26,7 +26,6 @@ const Login = () => {
 				message.error('Dados de acesso inválidos')
 			}
 
-
 		} catch (error) {
 			console.log('Erro de Login')
 			message.error('Dados de acesso inválidos')
