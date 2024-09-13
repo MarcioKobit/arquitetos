@@ -62,11 +62,10 @@ const ImageSlider = ({ slides }: Props) => {
     const [currentImage, setcurrentImage] = useState(slides[currentIndex].foto);
 
     const goToPrevious = () => {
-        console.log(currentIndex)
         const isFirstSlide = currentIndex === 0;
         const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
         setCurrentIndex(newIndex);
-        setcurrentImage(slides[currentIndex].url)
+        setcurrentImage(slides[currentIndex].foto)
     };
     const goToNext = () => {
         const isLastSlide = currentIndex === slides.length - 1;

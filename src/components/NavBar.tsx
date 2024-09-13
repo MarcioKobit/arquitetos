@@ -1,15 +1,26 @@
 import PointsHome from "./Home/PointsHome";
 import { Link, useLocation } from "react-router-dom";
 import ProfileModal from "./ProfileModal";
-
-import logo_white from "../assets/logo-white.png";
-import logo from "../assets/logo.png";
-import profile_img from "../assets/profile-img.png";
+import logo from "../assets/Logo_clube_branca.png";
 import bell from "../assets/bell.png";
 import gray_bell from "../assets/gray-bell.png";
 import { AiOutlineMenu } from "react-icons/ai";
+import { userAuth } from "../AuthProvider/userAuth.tsx";
 
 import { useState, useEffect } from "react";
+import { getUserLocalStorage, setUserLocalStorage } from "../AuthProvider/utils";
+import api from "../services/api";
+
+interface User {
+	id: number;
+	idpessoa: number;
+	nome: string;
+	token: string;
+	rota: string;
+	cupom: string;
+	foto: string;
+}
+
 
 const NavBar = () => {
 	const Links = [
@@ -22,12 +33,12 @@ const NavBar = () => {
 
 	const location = useLocation();
 	const { pathname } = location;
-	// alert(pathname);
-	// const isDark = pathname === "/";
+	const auth = userAuth();
 	const isDark = true;
-
-	// alert(isDark)
-
+	const [imgProfile, setimgProfile] = useState(null);
+	const [user, setuser] = useState<User>({});
+	const classeBlack = "w-44 object-contain corBlack";
+	const classeWhite = "w-44 object-contain corBranca";
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [open, setOpen] = useState(false);
 
@@ -38,7 +49,22 @@ const NavBar = () => {
 
 	const closeModal = () => {
 		setIsModalOpen(false);
-		document.body.classList.remove("modal-open");
+		// document.body.classList.remove("modal-open");
+	};
+
+	const onChangePhoto = async (imgBASE64) => {
+		// console.log(imgBASE64)
+		setimgProfile(imgBASE64)
+		auth.foto = imgBASE64;
+		setUserLocalStorage(auth);
+		getFotoPerfil();
+
+		try {
+			const wRetorno = await api.post(auth.rota + '/avatar', { AREA: "ARQUITETOS", FOTO: imgBASE64 });
+		} catch (error) {
+			console.log(error)
+		}		
+
 	};
 
 	const [scrollingDown, setScrollingDown] = useState(false);
@@ -50,8 +76,15 @@ const NavBar = () => {
 		}, 500);
 	};
 
+	const getFotoPerfil = async () => {
+		// console.log(auth);
+		const wUser = getUserLocalStorage();
+		setuser(wUser);
+	}
+
 	useEffect(() => {
-		window.addEventListener("scroll", handleScroll);
+		getFotoPerfil();
+		window.addEventListener("scroll", handleScroll);		
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
@@ -62,7 +95,7 @@ const NavBar = () => {
 			<div className={`md:flex ${pathname === "/" ? "h-44 md:h-48" : "h-24 md:h-32"} items-center justify-between px-4 md:px-10 py-4 tracking-wider font-inter ${isDark ? "bg-green-600" : "bg-white"}`}>
 				<div className="font-bold text-2xl md:mb-8 cursor-pointer flex items-center font-inter text-gray-800">
 					<Link to="/">
-						<img src={isDark ? logo_white : logo} alt="Logo" className="w-44 object-contain" />
+						<img src={logo} alt="Logo" className={isDark == true ? classeWhite : classeBlack} />
 					</Link>
 				</div>
 
@@ -78,7 +111,7 @@ const NavBar = () => {
 						</li>
 					))}
 					<div>
-						<img src={profile_img} alt="Foto de Perfil" className="absolute md:relative right-20 md:right-0 -top-16 md:top-0 h-12 w-12 md:h-16 md:w-16 rounded-full mx-4 cursor-pointer" onClick={handleProfileClick} />
+						<img src={imgProfile != null ? imgProfile : auth.foto} alt="Foto de Perfil" className="absolute md:relative right-20 md:right-0 -top-16 md:top-0 h-16 w-16 md:h-20 md:w-20 rounded-full mx-4 cursor-pointer" onClick={handleProfileClick} />
 					</div>
 					<div className="absolute md:relative right-16 md:right-0 -top-12 md:top-0">
 						<img src={isDark ? bell : gray_bell} alt="Sino" className="w-6 h-6 md:ml-4 object-scale-down" />
@@ -87,7 +120,7 @@ const NavBar = () => {
 				</ul>
 			</div>
 			{pathname === "/" ? <PointsHome /> : null}
-			<ProfileModal isOpen={isModalOpen} onClose={closeModal} user={{ name: "aaa", subtitle: "bbb", avatar: profile_img }} />
+			<ProfileModal isOpen={isModalOpen} onClose={closeModal} onChangePhoto={onChangePhoto} user={auth} />
 		</div>
 	);
 };

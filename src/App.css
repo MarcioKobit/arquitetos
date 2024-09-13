@@ -1,0 +1,13 @@
+.cursorClick {
+    cursor: pointer;
+}
+
+.corBlack {
+    color: black;
+    filter: invert(1);
+}
+
+.corBranca {
+    color: white;
+    filter: invert(0);
+}

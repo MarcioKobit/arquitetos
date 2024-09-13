@@ -1,5 +1,5 @@
 
-import logo from "./../assets/logo.png";
+import logo from "./../assets/Logo_clube_branca.png";
 import guys_laptop from "./../assets/guys-laptop.png";
 import money_hand from "./../assets/money-hand.png";
 import lock from "./../assets/lock.png";
@@ -19,7 +19,6 @@ const Login = () => {
 		try {
 			const login = await auth.authenticate(values.email, values.password);
 			if (login != null) {
-				// console.log(login)
 				navigate("/");
 			} else {
 				console.log('Erro de Login')
@@ -35,7 +34,7 @@ const Login = () => {
 	return (
 		<div className="flex flex-col md:flex-row h-screen font-inter">
 			<div className="md:w-1/2 flex flex-col justify-center items-center">
-				<img className="mb-4" src={logo} width={393} height={96} alt="logo" />
+				<img className="mb-4 corBlack" src={logo} width={393} height={96} alt="logo" />
 				<h2 className="text-sm mb-4 mt-28 md:mt-12 text-zinc-550 leading-5">Digite e-mail e senha para acessar a conta.</h2>
 				<Form name='basic' labelCol={{ span: 1 }} wrapperCol={{ offset: 4, span: 17 }} onFinish={onFinish} style={{ width: 400 }}>
 					<Form.Item name='email' rules={[{ required: true, message: 'Informar seu e-mail!' }]}>

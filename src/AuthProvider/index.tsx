@@ -1,12 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import { IAuthProvider, IContext, IUser } from "./type";
+import user_avatar from "../assets/user.png";
 import { LoginRequest, getUserLocalStorage, setUserLocalStorage, getPontos, setPontosLocalStorage } from "./utils";
 
 
-
 export const AuthContext = createContext<IContext>({} as IContext)
-
-
 export const AuthProvider = ({ children }: IAuthProvider) => {
     const [user, setUser] = useState<IUser | null>()
 
@@ -20,12 +18,28 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
         }
     }, []);
 
+    const getBase64 = file => {
+        return new Promise(resolve => {
+            let fileInfo;
+            let baseURL = "";
+
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+
+            fileInfo = reader.onload = () => {
+                baseURL = reader.result;
+                resolve(baseURL);
+            };
+        });
+    };
+
     async function authenticate(email: string, password: string) {
         try {
             const response = await LoginRequest(email, password);
-            // console.log(response)
+            console.log(response)
             if (response.STATUS == true) {
-                const paylod = { id: response.DATA.ID, IDPESSOA: response.DATA.IDPESSOA, nome: response.DATA.NOME, token: response.DATA.TOKEN, rota: response.DATA.ROTA, cupom: response.DATA.CUPOM };
+                const paylod = { id: response.DATA.ID, idpessoa: response.DATA.IDPESSOA, nome: response.DATA.NOME, token: response.DATA.TOKEN, rota: response.DATA.ROTA, cupom: response.DATA.CUPOM, foto: response.DATA.FOTO };
+
                 setUser(paylod);
                 setUserLocalStorage(paylod);
                 const pontos = await getPontos(paylod);

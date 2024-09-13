@@ -22,10 +22,9 @@ const Prize = () => {
 		try {
 			const objPremios = await api.get(auth.rota + '/premios?idpremio=' + id);
 			setPrizes(objPremios.data.DATA[0]);
-			setslides(objPremios.data.DATA[0].photo)
-
+			setslides(objPremios.data.DATA[0].photo);
 		} catch (error) {
-			console.log(error)
+			// console.log(error)
 		}
 	}
 
@@ -34,7 +33,7 @@ const Prize = () => {
 			const objPontos = await api.get(auth.rota + '/pontos');
 			setPontos(objPontos.data.DATA.pontos);
 		} catch (error) {
-			console.log(error)
+			// console.log(error)
 		}
 	}
 
@@ -47,7 +46,6 @@ const Prize = () => {
 		if (id != undefined) {
 			getPrizes();
 			getPontos();
-
 		}
 
 	}, []);
@@ -61,13 +59,14 @@ const Prize = () => {
 						<div className="relative">
 							<img src={vector_big} className="absolute bottom-0 object-contain rounded-3xl md:w-full" alt="vector" />
 							<ImageSlider slides={slides} />
-							{/* <img src={prize.photo[0].foto} className="rounded-3xl md:w-full" width={271} height={311} alt="" /> */}
 						</div>
 
 					</div>
 					<div className="px-4 md:px-16 py-8">
 						<h1 className="text-3xl md:text-3xl text-green-600 break-words font-bold mb-4 md:w-72">{prize.title}</h1>
-						<p className="text-sm md:text-md text-gray-600 mb-6">Prazo: 20/12</p>
+						{prize.datainicio != null && prize.datainicio != '' ? (
+							<p className="text-sm md:text-md text-gray-600 mb-6">Prazo resgate: {prize.datafim}</p>
+						) : null}
 						<div className="mb-2">
 							<ProgressBar progress={calculatePorcentage(prize.points)} height={"h-7"} width={"w-72"} points={pontos} text={"text-sm"} />
 						</div>

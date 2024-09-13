@@ -6,28 +6,18 @@ import Prize from "../routes/Prize.tsx";
 import Extracts from "../routes/Extracts.tsx";
 import Stores from "../routes/Stores.tsx";
 import Faq from "../routes/Faq.tsx";
+import ChangeSenha from "../routes/ChangeSenha.tsx";
 
 const Rotas = () => (
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={
-                <Home />
-            } />
-            <Route path="/prizes" element={
-                <Prizes />
-            } />
-            <Route path="/prize/:id" element={
-                <Prize />
-            } />
-            <Route path="/stores" element={
-                <Stores />
-            } />
-            <Route path="/extracts" element={
-                <Extracts />
-            } />
-            <Route path="/faq" element={
-                <Faq />
-            } />
+            <Route path="/" element={<Home />} />
+            <Route path="/prizes" element={<Prizes />} />
+            <Route path="/prize/:id" element={<Prize />} />
+            <Route path="/stores" element={<Stores />} />
+            <Route path="/extracts" element={<Extracts />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/changepass" element={<ChangeSenha />} />
             <Route path="*" element={<Prize />} />
         </Routes>
     </BrowserRouter>

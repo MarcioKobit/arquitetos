@@ -5,6 +5,7 @@ export interface IUser {
     token?: string;
     rota?: string;
     cupom?: string;
+    foto?: string;
 
 }
 
