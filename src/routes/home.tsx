@@ -26,9 +26,9 @@ export default function Home() {
                     <Link to="faq">
                         <CardsHome icon={faq} title={"Dúvidas Frequentes"} />
                     </Link>
-                    <Link to="faq">
+                    {/* <Link to="faq">
                         <CardsHome icon={account} title={"Conta"} />
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </>

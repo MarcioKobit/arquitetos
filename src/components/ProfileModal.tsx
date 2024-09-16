@@ -42,7 +42,7 @@ const Modal: React.FC<ModlProps> = ({ isOpen, onClose, onChangePhoto, user }) =>
 
 	const modalOptions = [
 		{ id: 1, title: "Dados pessoais", subtitle: "Veja e edite dados cadastrais", link: '', icon: personal_data, w: 28 },
-		{ id: 2, title: "Endereço", subtitle: "Confira e/ou edite seu endereço", link: '', icon: profile_map, w: 28 },
+		// { id: 2, title: "Endereço", subtitle: "Confira e/ou edite seu endereço", link: '', icon: profile_map, w: 28 },
 		{ id: 3, title: "Alterar senha", subtitle: "Altere sua senha desde aqui", link: '/changepass', icon: profile_lock, w: 28 },
 		{ id: 4, title: "Dúvidas Frequentes", subtitle: "Tire suas dúvidas sobre a Pormade", link: '/faq', icon: profile_question, w: 28 },
 		// { id: 5, title: "Dados da Conta", subtitle: "Veja e edite dados cadastrais", link: '', icon: profile_lock, w: 28 },
@@ -104,7 +104,7 @@ const Modal: React.FC<ModlProps> = ({ isOpen, onClose, onChangePhoto, user }) =>
 					<div className="absolute text-white text-4xl -top-8 right-4 md:hidden">
 						<RxCross1 />
 					</div>
-					<div className="flex items-center justify-center h-10/12 md:h-screen">
+					<div className="flex items-center justify-center h-10/12 md:h-screen" >
 						<div className="w-full h-10/12 bg-green-600 mt-16 rounded-xl flex items-center">
 							<div className="flex flex-col">
 								<div className="absolute ml-24 md:ml-28 -mt-24">
@@ -121,7 +121,7 @@ const Modal: React.FC<ModlProps> = ({ isOpen, onClose, onChangePhoto, user }) =>
 									</div>
 								</div>
 
-								<div className="mt-16">
+								<div className="mt-16" onClick={onClose}>
 									{modalOptions.map((item, index) => (
 										<div className="flex items-center my-8 cursorClick" key={index} onClick={() => f_carregaItem(index, onClose)}>
 											<div className="ml-16 mr-4">

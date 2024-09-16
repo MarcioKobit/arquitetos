@@ -51,20 +51,20 @@ const Login = () => {
 								<img className="ml-4" src={money_hand} width={28} height={28} alt="money-hand" />
 								<p className="text-xs text-zinc-500 leading-5 mr-4">Acessar</p>
 							</Button>
-							<Button type="text">
-								<img className="ml-4" src={lock} width={20} height={20} alt="lock" />
+							<Button type="text" className="">
+								<img className="" src={lock} width={20} height={20} alt="lock" />
 								{/* <AiOutlineUnlock size={28} className="text-green-600 ml-4" /> */}
-								<p className="text-xs text-zinc-500 leading-5">Esqueci minha senha</p>
+								<p className="text-xs  leading-5">Esqueci minha senha</p>
 							</Button>
 						</Flex>
 					</Form.Item>
 				</Form>
 				<div className="flex flex-col items-center mt-32">
 					<div className="flex mb-4">
-						<SlSocialInstagram size={38} className="text-green-600 mx-2" />
-						<RiFacebookLine size={38} className="text-green-600 mx-2" />
+						<SlSocialInstagram size={38} className="corBranca" />
+						<RiFacebookLine size={38} className="corBranca" />
 					</div>
-					<p className="text-sm text-gray-500 break-words w-32 text-center">Conheça nossas redes sociais</p>
+					<p className="text-sm corBranca break-words w-32 text-center ">.</p>
 				</div>
 			</div>
 			<div className="w-1/2 h-screen hidden md:block">

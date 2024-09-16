@@ -113,10 +113,10 @@ const NavBar = () => {
 					<div>
 						<img src={imgProfile != null ? imgProfile : auth.foto} alt="Foto de Perfil" className="absolute md:relative right-20 md:right-0 -top-16 md:top-0 h-16 w-16 md:h-20 md:w-20 rounded-full mx-4 cursor-pointer" onClick={handleProfileClick} />
 					</div>
-					<div className="absolute md:relative right-16 md:right-0 -top-12 md:top-0">
+					{/* <div className="absolute md:relative right-16 md:right-0 -top-12 md:top-0">
 						<img src={isDark ? bell : gray_bell} alt="Sino" className="w-6 h-6 md:ml-4 object-scale-down" />
 						<div className={`absolute rounded-full w-3 h-3 -mt-7 ml-3 md:ml-7 ${isDark ? "bg-green-400" : "bg-green-700"}`}></div>
-					</div>
+					</div> */}
 				</ul>
 			</div>
 			{pathname === "/" ? <PointsHome /> : null}

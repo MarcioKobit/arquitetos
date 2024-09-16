@@ -11,3 +11,7 @@
     color: white;
     filter: invert(0);
 }
+.corBranca2 {
+    color: white;
+    visibility: hidden;
+}
