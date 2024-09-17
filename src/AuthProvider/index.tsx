@@ -18,21 +18,6 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
         }
     }, []);
 
-    const getBase64 = file => {
-        return new Promise(resolve => {
-            let fileInfo;
-            let baseURL = "";
-
-            let reader = new FileReader();
-            reader.readAsDataURL(file);
-
-            fileInfo = reader.onload = () => {
-                baseURL = reader.result;
-                resolve(baseURL);
-            };
-        });
-    };
-
     async function authenticate(email: string, password: string) {
         try {
             const response = await LoginRequest(email, password);

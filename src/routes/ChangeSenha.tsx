@@ -5,12 +5,7 @@ import { userAuth } from "../AuthProvider/userAuth";
 import { Button, Flex, Form, Input } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
-
-
-
 import api from "../services/api";
-
 import lock from "./../assets/lock.png";
 
 
@@ -68,7 +63,7 @@ const ChangeSenha = () => {
 
                     if (objEfetivado.data.STATUS == true) {
                         toast.success('Alterando Item');
-                        // form.resetFields();
+                        form.resetFields();
                         setdisabledInput(false);
                     } else {
                         toast.error('Erro ao validar o código!');

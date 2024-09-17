@@ -25,3 +25,4 @@ dist-ssr
 *.sw?
 src/services/api.ts
 BACKUP.js
+.editorconfig

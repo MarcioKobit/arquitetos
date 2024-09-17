@@ -98,9 +98,9 @@ const NavBar = () => {
 						<img src={logo} alt="Logo" className={isDark == true ? classeWhite : classeBlack} />
 					</Link>
 				</div>
-
+				{/* className={`${pathname === "/" ? "text-white" : "text-green-600"} md:hidden`}  */}
 				<div onClick={() => setOpen(!open)} className="text-3xl absolute right-6 top-6 cursor-pointer md:hidden">
-					<AiOutlineMenu className={`${pathname === "/" ? "text-white" : "text-green-600"} md:hidden`} size={32} />
+					<AiOutlineMenu className="text-white" size={32} />
 				</div>
 
 				<ul className={`md:flex md:items-center md:pb-0 text-xs uppercase font-normal ${isDark ? "text-white bg-green-600" : "text-gray-400 bg-white"

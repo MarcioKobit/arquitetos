@@ -1,7 +1,7 @@
 {
   "name": "pormade-web",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,12 +13,12 @@
     "@headlessui/react": "^1.7.14",
     "antd": "^5.19.0",
     "axios": "^1.7.2",
-    "mkcert": "^3.2.0",
-    "nss": "^0.0.1",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.11.1",
+    "react-toastify": "^10.0.5",
     "tailwind-scrollbar": "^3.0.4",
     "typeface-inter": "^3.18.1",
     "vite-plugin-mkcert": "^1.17.5"

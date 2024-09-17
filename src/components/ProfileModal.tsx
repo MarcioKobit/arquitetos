@@ -1,11 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Transition } from "@headlessui/react";
 
 import personal_data from "../assets/personal-data.png";
-import profile_map from "../assets/profile-map.png";
 import profile_lock from "../assets/profile-lock.png";
 import profile_question from "../assets/profile-question.png";
-import profile_img from "../assets/account.png";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 import { userAuth } from "../AuthProvider/userAuth.tsx";
@@ -13,7 +11,7 @@ import '../App.css'
 
 import { RxCross1 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
-import { getUserLocalStorage } from "../AuthProvider/utils";
+
 
 
 interface ModalProps {
@@ -41,7 +39,7 @@ const Modal: React.FC<ModlProps> = ({ isOpen, onClose, onChangePhoto, user }) =>
 	const auth = userAuth();
 
 	const modalOptions = [
-		{ id: 1, title: "Dados pessoais", subtitle: "Veja e edite dados cadastrais", link: '', icon: personal_data, w: 28 },
+		{ id: 1, title: "Dados pessoais", subtitle: "Veja e edite dados cadastrais", link: '/dados', icon: personal_data, w: 28 },
 		// { id: 2, title: "Endereço", subtitle: "Confira e/ou edite seu endereço", link: '', icon: profile_map, w: 28 },
 		{ id: 3, title: "Alterar senha", subtitle: "Altere sua senha desde aqui", link: '/changepass', icon: profile_lock, w: 28 },
 		{ id: 4, title: "Dúvidas Frequentes", subtitle: "Tire suas dúvidas sobre a Pormade", link: '/faq', icon: profile_question, w: 28 },

@@ -1,13 +1,14 @@
 
 import trophy from "./../assets/trophy.png";
-// import stores from "./../assets/stores.png";
 import extracts from "./../assets/extracts.png";
-// import financial_extracts from "./assets/financial-extracts.png";
 import faq from "./../assets/faq.png";
 import account from "./../assets/account.png";
-import NavBar from "./../components/NavBar";
-import CardsHome from "./../components/Home/CardsHome";
+import NavBar from "../components/NavBar";
+import CardsHome from "../components/Home/CardsHome";
 import { Link } from "react-router-dom";
+
+// import stores from "./../assets/stores.png";
+// import financial_extracts from "./assets/financial-extracts.png";
 
 export default function Home() {
     return (
@@ -26,9 +27,9 @@ export default function Home() {
                     <Link to="faq">
                         <CardsHome icon={faq} title={"Dúvidas Frequentes"} />
                     </Link>
-                    {/* <Link to="faq">
+                    <Link to="dados">
                         <CardsHome icon={account} title={"Conta"} />
-                    </Link> */}
+                    </Link>
                 </div>
             </div>
         </>

@@ -55,7 +55,7 @@ const Faq = () => {
 		try {
 			const objFaq = await api.get(auth.rota + '/faq');
 			setArr(objFaq.data.DATA);
-			console.log(arr)
+			// console.log(arr)
 		} catch (error) {
 			console.log(error)
 		}

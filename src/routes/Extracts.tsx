@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Table from "../components/Extracts/Table";
+import TableMobile from "../components/Extracts/TableMobile";
 import NavBar from "../components/NavBar";
 import { userAuth } from "../AuthProvider/userAuth";
+import { isMobile } from 'react-device-detect';
 import api from "../services/api";
 
 
@@ -31,7 +33,11 @@ const Extracts = () => {
                     Veja seus <span className="text-green-600 font-bold ml-2">extratos</span>
                 </div>
             </div>
-            <Table data={extrato} />
+            {isMobile != true ? (
+                <Table data={extrato} />
+            ) :
+                <TableMobile data={extrato} />
+            }
         </>
     )
 }

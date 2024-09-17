@@ -1,4 +1,11 @@
 
+
+import { Button, Flex, Form, Input, message } from "antd";
+import { isMobile } from 'react-device-detect';
+import { userAuth } from "../AuthProvider/userAuth";
+import { useNavigate, } from "react-router-dom";
+
+
 import logo from "./../assets/Logo_clube_branca.png";
 import guys_laptop from "./../assets/guys-laptop.png";
 import money_hand from "./../assets/money-hand.png";
@@ -7,13 +14,15 @@ import artboard1 from "./../assets/artboard1.png";
 import artboard2 from "./../assets/artboard2.png";
 import { RiFacebookLine } from "react-icons/ri";
 import { SlSocialInstagram } from "react-icons/sl";
-import { Button, Flex, Form, Input, message } from "antd";
-import { userAuth } from "../AuthProvider/userAuth";
-import { useNavigate, } from "react-router-dom";
+import { toast } from "react-toastify";
+
+const gWidth = isMobile == true ? '80%' : 400;
 
 const Login = () => {
 	const auth = userAuth();
-	const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    toast.success(window.innerWidth)
 
 	async function onFinish(values: { email: string, password: string }) {
 		try {
@@ -36,7 +45,7 @@ const Login = () => {
 			<div className="md:w-1/2 flex flex-col justify-center items-center">
 				<img className="mb-4 corBlack" src={logo} width={393} height={96} alt="logo" />
 				<h2 className="text-sm mb-4 mt-28 md:mt-12 text-zinc-550 leading-5">Digite e-mail e senha para acessar a conta.</h2>
-				<Form name='basic' labelCol={{ span: 1 }} wrapperCol={{ offset: 4, span: 17 }} onFinish={onFinish} style={{ width: 400 }}>
+                <Form name='basic' onFinish={onFinish} style={{ width: gWidth }}>
 					<Form.Item name='email' rules={[{ required: true, message: 'Informar seu e-mail!' }]}>
 						<Input placeholder="E-mail" />
 					</Form.Item>
@@ -45,7 +54,7 @@ const Login = () => {
 						<Input.Password placeholder="Senha" />
 					</Form.Item>
 
-					<Form.Item wrapperCol={{ offset: 4, span: 1 }}>
+                    <Form.Item >
 						<Flex gap="small">
 							<Button type="text" htmlType="submit">
 								<img className="ml-4" src={money_hand} width={28} height={28} alt="money-hand" />

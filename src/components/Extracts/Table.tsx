@@ -13,20 +13,7 @@ interface Props {
 }
 
 const Table: React.FC<Props> = ({ data }) => {
-  // const renderStatusIndicator = (status: string) => {
-  //   let colorClass = "bg-green-500";
-  //   let tooltipText = "Pago";
-
-  //   if (status === "yellow") {
-  //     colorClass = "bg-yellow-500";
-  //     tooltipText = "Pendente";
-  //   } else if (status === "red") {
-  //     colorClass = "bg-red-500";
-  //     tooltipText = "Reprovado";
-  //   }
-
-  //   return <div className={`h-4 w-4 rounded-full ${colorClass}`} title={tooltipText}></div>;
-  // };
+    ;
 
   const columns = ["Cliente", "Proposta", "Valor", "Pontos", "Loja", "Data"];
 
