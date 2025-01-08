@@ -200,7 +200,7 @@ const DadosUsuarios = () => {
     const confirm = () =>
         new Promise((resolve) => {
 
-            const data = {
+            const dataUsuario = {
                 name: form.getFieldValue('name').toUpperCase(),
                 identityType: form.getFieldValue('identityType'),
                 identity: form.getFieldValue('identityity'),
@@ -216,10 +216,18 @@ const DadosUsuarios = () => {
 
             };
 
+            const wData = {
+                STATUS: true,
+                RECORDS: 1,
+                DATA: dataUsuario
+            }
+            api.put(auth.rota + '/dados', wData).then((resposta) => {
 
-            toast(JSON.stringify(data))
-            setTimeout(() => resolve(null), 3000);
+                toast("Dados atualizado com sucesso!")
+                setTimeout(() => resolve(null), 3000);
+            })
         })
+
 
     useEffect(() => {
         getDadosSYS();
@@ -293,11 +301,6 @@ const DadosUsuarios = () => {
 
                             <Space.Compact >
                                 <Form.Item >
-                                    {/*
-                                    <Button type="text" style={{ width: '300px' }} htmlType="submit">
-                                        <CheckOutlined />
-                                        <p className="text-xs text-zinc-500 leading-5 mr-4">Modificar</p>
-                                    </Button> */}
 
                                     <Popconfirm
                                         title="Alterações cadastro"
@@ -305,17 +308,11 @@ const DadosUsuarios = () => {
                                         onConfirm={confirm}
                                         onOpenChange={() => console.log('open change')}
                                     >
-                                        {/* <Button type="primary">Open Popconfirm with Promise</Button> */}
                                         <Button type="text" style={{ backgroundColor: 'green', width: '300px' }}>
                                             <CheckOutlined />
                                             <p className="text-xl text-white leading-5 mr-4">Modificar</p>
                                         </Button>
                                     </Popconfirm>
-
-                                    {/* <Button type="text">
-                                        <CloseCircleOutlined />
-                                        <p className="text-xd text-zinc-500 leading-5 mr-4">Cancelar</p>
-                                    </Button> */}
 
                                 </Form.Item>
                             </Space.Compact>

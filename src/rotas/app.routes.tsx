@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Prizes from "../routes/Prizes.tsx";
-import Home from "../routes/Home.tsx";
-// import Home from "../routes/Home.tsx";
+import Home from "../routes/home.tsx";
 import Prize from "../routes/Prize.tsx";
 import Extracts from "../routes/Extracts.tsx";
 import Stores from "../routes/Stores.tsx";

@@ -12,9 +12,9 @@ import mkcert from'vite-plugin-mkcert'
 
 export default defineConfig({
   server: {
-    https: false,
     port: 80,
-    host: true
+    host: true,
+    strictPort: true
   },
   // plugins: [react(), mkcert()],
   plugins: [react()],

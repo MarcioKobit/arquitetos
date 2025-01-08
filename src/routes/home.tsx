@@ -7,9 +7,6 @@ import NavBar from "../components/NavBar";
 import CardsHome from "../components/Home/CardsHome";
 import { Link } from "react-router-dom";
 
-// import stores from "./../assets/stores.png";
-// import financial_extracts from "./assets/financial-extracts.png";
-
 export default function Home() {
     return (
         <>
